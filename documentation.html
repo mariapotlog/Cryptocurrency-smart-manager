@@ -23,6 +23,11 @@
     .header-left {
       margin-left: 1em
     }
+
+    #image {
+      display: block;
+      margin: 3vmin auto
+    }
   </style>
 </head>
 
@@ -34,7 +39,13 @@
     <h2><a href="#structure">3. Structure</a></h2>
     <div class="header-left">
       <h3><a href="#technologies">3.1 Technologies</a></h3>
+      <h3><a href="#api">3.2 API</a></h3>
+      <h3><a href="#paradigms">3.3 Paradigms</a></h3>
+      <h3><a href="#app-structure">3.4 App structure</a></h3>
+      <h3><a href="#user-persona">3.5 User persona</a></h3>
+      <h3><a href="#user-stories">3.6 User stories</a></h3>
     </div>
+    <h2><a href="#references">4. References</a></h2>
     <h2>Authors</h2>
     <div>
       <ul>
@@ -103,6 +114,127 @@
         easy-to-use API and can be used in the browser.
       </li>
     </ol>
+    <div>
+      <h3 id="api">3.2 API</h3>
+      <p>
+        API is the acronym for Application Programming Interface, which is a software intermediary that allows two
+        applications to talk to each other. To be more specific it’s an information gateway that allows the backends of
+        software and services to communicate with one another.
+        How does this work? An API is the messenger that delivers your request to the provider that you're requesting it
+        from and then delivers the response back to you.
+      </p>
+      <p>
+        APIs work using ‘requests’ and ‘responses’. When an API requests information from a web application or web
+        server,
+        it will receive a response. The place that APIs send requests and where the resource lives, is called an
+        endpoint.
+      </p>
+      <p>
+        The API that will be used for the application is <a href="https://api.coingecko.com/api/v3">CoinGecko</a>.
+      </p>
+      <p>
+        CoinGecko provides a fundamental analysis of the crypto market. In addition to tracking price, volume and market
+        capitalization, CoinGecko tracks community growth, open-source code development, major events and on-chain
+        metrics. The objective of this API is to elevate crypto participants’ understanding of fundamental factors that
+        drive the market. It currently tracks nearly 5968 tokens from more than 410 cryptocurrency exchanges.
+      </p>
+    </div>
+
+    <h4>In the development of the application we will use these 2 endpoints:</h4>
+    <ul>
+      <li>
+        <strong>GET</strong> <i>/coins/${id}/market_chart/id?vs_currency=usd&days=1&interval=daily</i>
+        <strong>-></strong>
+        Get historical market data including price, market cap, and 24h volume (granularity auto). It can take the
+        following parameters: id (passes the coin id), vs_currency (The target currency of market data), days (Data up
+        to number of days ago), interval (Optional) (Data interval).
+      </li>
+      <li>
+        <strong>GET</strong> <i>/coins/markets?vs_currency=usd&ids=bitcoin</i> <strong>-></strong> Lists all supported
+        coins price, market cap, volume, and market related data. It can take many more parameters, like category,
+        order, page or price_change_percentage, but for this application only 2 will be used: vs_currency (The target
+        currency of market data) and ids (The ids of the coin, comma separated cryptocurrency symbols).
+      </li>
+    </ul>
+
+    <h4>This API offers many more endpoints, such as:</h4>
+    <ul>
+      <li>
+        <strong>GET</strong> /coins/{id}/history - Get historical data (name, price, market, stats) at a given date for
+        a coin.
+      </li>
+      <li>
+        <strong>GET</strong> /coins/{id}/market_chart/range - Get historical market data include price, market cap, and
+        24h volume within a range of timestamp.
+      </li>
+      <li>
+        <strong>GET</strong> /coins/{id}/status_updates - Get status updates for a given coin.
+      </li>
+      There are many others endpoints. For a more detailed description of the API can be found at this
+      <a href="https://www.coingecko.com/en/api">link</a>. But for the first version of the application the chosen two
+      endpoints are enough.
+    </ul>
+    <div>
+      <h3 id="paradigms">3.3 Paradigms</h3>
+      <p>
+        Since the creation of React, the library has gone through significant changes. Nowadays there are three
+        different ways of writing React, either using class components, functional components or a combination of both,
+        each having their ups and downs. But lately, more and more React developers have switched to the functional
+        components type of development, using React Hooks, since it makes the development process easier than the class
+        components way. More than that, using functional components de-bloats the app as a whole, which makes it way
+        faster.
+      </p>
+      <p>
+        So, for the development of the app, we will use React Hooks, which uses the functional components approach.
+        Hooks solve a wide variety of seemingly unconnected problems in React that were encountered since the inception
+        of the React library. Before hooks, it was hard to reuse stateful logic between components, but now, you can
+        extract stateful logic from a component so it can be tested independently and reused in other components. So, in
+        shorter words, creating our custom hooks helps us abstract logic and reuse it in other components.
+      </p>
+    </div>
+    <div>
+      <img id="image" width="700" height="550" src="./component_schema.png" />
+      <h3 id="app-structure">3.4 App Structure</h3>
+      <h4>Front-end</h4>
+      <ul>
+        <li>
+          The frontend application will be created using the create-react-app toolchain, that will set up the
+          development environment, so that we can use the latest JavaScript features, and also optimize the app for
+          production.
+        </li>
+        <li>
+          The app will be developed as SPA (Single page application), having one big component, which usually is called
+          App. From our App component, the rest of the application will stem, basically creating a tree of smaller
+          components, as you can see in the image below.
+        </li>
+        <li>
+          As mentioned, we will be using Material-ui framework in order to create our components. To give our components
+          a proper design we will make use of the styled components approach provided by this framework.
+        </li>
+        <li>
+          To access the CoinGecko API, we will create an API controller. This will define a few methods that return
+          diverse information, ex: get the price fluctuation of a certain coin over a period of time (24 hours, 7 days
+          or 1 year).
+        </li>
+        <li>
+          In order to abstract the logic of fetching all the coin related data we will create a hook and it will be used
+          wherever it will be needed.
+        </li>
+        <p>As of now, we don’t see any other structural or architectural need for the frontend of the application.</p>
+      </ul>
+      <h4>Back-end</h4>
+      <h4>As of now we see two approaches for the back-end:</h4>
+      <ul>
+        <li>
+          Go with a ‘serverless’ approach, meaning we won’t create a dedicated server for the application and just use
+          the services already created in the front-end.
+        </li>
+        <li>
+          Create a dedicated node.js server, using the express framework. This server will act as a proxy to the
+          CoinGecko API and serve the data to the frontend app.
+        </li>
+      </ul>
+    </div>
   </div>
 </body>
 
