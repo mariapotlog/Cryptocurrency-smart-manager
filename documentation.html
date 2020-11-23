@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation</title>
+  <style>
+    #title {
+      text-align: center;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      margin: 0 3vmin
+    }
+
+    .header {
+      margin-left: 3em
+    }
+
+    .header-left {
+      margin-left: 1em
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="title">Documentation</h1>
+  <div class="header">
+    <h2><a href="#abstract">1. Abstract</a></h2>
+    <h2><a href="#introduction">2. Introduction</a></h2>
+    <h2><a href="#structure">3. Structure</a></h2>
+    <div class="header-left">
+      <h3><a href="#technologies">3.1 Technologies</a></h3>
+    </div>
+    <h2>Authors</h2>
+    <div>
+      <ul>
+        <li>Potlog Maria</li>
+        <li>Ribac Jean Adrian</li>
+        <li>Paulet Bogdan Claudiu</li>
+      </ul>
+    </div>
+    <h2>Discussion Group</h2>
+    <h4><a href="https://github.com/mariapotlog/Cryptocurrency-smart-manager">GitHub Repository</a></h4>
+  </div>
+  <div class="main">
+    <div>
+      <h2 id="abstract">1. Abstract</h2>
+      <p>
+        The “Cryma” application (Cryptocurrency “Smart” Manager) is an application that tracks, displays and provides
+        temporal details (starting with the present time) about the cryptocurrency prices.
+      </p>
+    </div>
+    <h2 id="introduction">2. Introduction</h2>
+    <p>
+      Cryma is an application dedicated to cryptocurrency enthusiasts. The application offers users the chance to
+      track a multitude of cryptocurrencies, to analyze the progress of each currency throughout the prism of a time
+      chart. The user can choose from three different time intervals, these having 24 hours, 7 days or a year, past from
+      the current moment. At the same time, the user can select several currencies, which he wants to view constantly,
+      and save them for later, as a list of favorites.
+    </p>
+    <h2 id="structure">3. Structure</h2>
+
+    <h4>In this chapter, we will present the structure of the project, which consists of the following:</h4>
+    <ul>
+      <li>Technologies used in creating the application;</li>
+      <li>API structure;</li>
+      <li>Application paradigms;</li>
+      <li>Structure of the application.</li>
+    </ul>
+    <h3 id="technologies">3.1 Technologies</h3>
+
+    <h4>For the development of the app, we will use:</h4>
+    <ol>
+      <li>
+        React Javascript library to build the user interface. It is maintained by Facebook and a community of
+        individual developers and companies. React can be used as a base in the development of single-page or mobile
+        applications.
+        Compared to other frontend technologies such as Angular or Vue.js that are considered frameworks, React is a
+        library. React is only concerned with rendering data to the DOM, and so creating React applications usually
+        requires the use of additional libraries for state management and routing. Redux and React Router are
+        respective examples of such libraries.
+      </li>
+      <li>
+        Material-ui React UI framework for a faster and easier development. Material-UI is one of the top user
+        interface frameworks for React out there. It gives developers a multitude of options, from a large array of text
+        components, to premade grids, flexboxes, buttons, different types of inputs, icons, and so on. It also gives
+        developers the chance to create their own CSS themes and use them across their apps.
+      </li>
+      <li>
+        Chart.js library, in order to create the charts displayed in the app. Chart.js is a free open-source
+        JavaScript library for data visualization, which supports 8 chart types: bar, line, area, pie (doughnut),
+        bubble, radar, polar, and scatter. It is maintained by the community and is the second most popular JS charting
+        library on
+        GitHub.
+      </li>
+      <li>
+        Axios, a popular HTTP client that helps us create requests. Axios is a promise-based HTTP client that sports
+        an
+        easy-to-use API and can be used in the browser.
+      </li>
+    </ol>
+  </div>
+</body>
+
+</html>
