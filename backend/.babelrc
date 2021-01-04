@@ -23,9 +23,11 @@
           "."
         ],
         "alias": {
+          "@app": "./src/app.js",
           "@config": "./src/config",
           "@helpers": "./src/helpers",
-          "@services": "./src/services"
+          "@services": "./src/services",
+          "@entities": "./src/entities"
         }
       }
     ]
