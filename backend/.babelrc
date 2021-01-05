@@ -27,7 +27,8 @@
           "@config": "./src/config",
           "@helpers": "./src/helpers",
           "@services": "./src/services",
-          "@entities": "./src/entities"
+          "@entities": "./src/entities",
+          "@coin": "./src/entities/coin"
         }
       }
     ]
