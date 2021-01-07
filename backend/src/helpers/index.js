@@ -4,3 +4,4 @@ export { default as asyncErrorHandler } from "./errorHandler";
 export { default as isLoggedIn } from "./isLoggedIn";
 export { default as convertUnixToDate } from "./convertUnixToDate"
 export { default as winston } from "./winston"
+export { default as shuffle } from "./shuffle"

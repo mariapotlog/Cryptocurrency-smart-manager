@@ -1,5 +1,11 @@
 import { convertUnixToDate } from '@helpers';
 
+const convertSupportedCurrenciesData = (data) => {
+  const newObj = {}
+  data.map((obj) => newObj[obj] = obj);
+  return newObj;
+}
+
 const convertCoinData = (data) => {
   const dataKeys = Object.keys(data)
   const newObj = {}
@@ -31,5 +37,6 @@ const convertCoinPairs = (data, vs_currency) => {
 const CoinUtils = {
   convertCoinData,
   convertCoinPairs,
+  convertSupportedCurrenciesData,
 }
 export default CoinUtils
