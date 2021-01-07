@@ -28,7 +28,8 @@
           "@helpers": "./src/helpers",
           "@services": "./src/services",
           "@entities": "./src/entities",
-          "@coin": "./src/entities/coin"
+          "@coin": "./src/entities/coin",
+          "@auth": "./src/entities/auth"
         }
       }
     ]
