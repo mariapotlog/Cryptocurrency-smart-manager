@@ -45,6 +45,7 @@
       <h3><a href="#user-persona">3.5 User persona</a></h3>
       <h3><a href="#user-stories">3.6 User stories</a></h3>
       <h3><a href="#wireframes">3.7 Wireframes</a></h3>
+      <h3><a href="#design">3.8 Design</a></h3>
     </div>
     <h2><a href="#references">4. References</a></h2>
     <h2>Authors</h2>
@@ -97,83 +98,106 @@
         respective examples of such libraries.
       </li>
       <li>
-        Material-ui React UI framework for a faster and easier development. Material-UI is one of the top user
-        interface frameworks for React out there. It gives developers a multitude of options, from a large array of text
-        components, to premade grids, flexboxes, buttons, different types of inputs, icons, and so on. It also gives
-        developers the chance to create their own CSS themes and use them across their apps.
+        React-query: is a server-side state management tool, that gives out-of-the-box solutions for queries and
+        mutations, cache manipulation, data refetching and many more
       </li>
       <li>
-        Chart.js library, in order to create the charts displayed in the app. Chart.js is a free open-source
-        JavaScript library for data visualization, which supports 8 chart types: bar, line, area, pie (doughnut),
-        bubble, radar, polar, and scatter. It is maintained by the community and is the second most popular JS charting
-        library on
-        GitHub.
+        Material-ui: is one of the top user interface frameworks for React out there. It gives developers a multitude of
+        options, from text components, to grids, flexboxes, buttons, inputs, icons, and so on. It also gives developers
+        the chance to create a custom CSS theme and use it across their apps.
       </li>
       <li>
-        Axios, a popular HTTP client that helps us create requests. Axios is a promise-based HTTP client that sports
-        an
-        easy-to-use API and can be used in the browser.
+        Chart.js library in order to create the charts displayed in the app. Chart.js is a free and open-source
+        JavaScript library for data visualization, which different types of charts: bar, line, area, pie (doughnut),
+        bubble, radar, polar, and scatter. It is maintained by the community and is one of the most popular JS charting
+        libraries on GitHub.
+      </li>
+      <li>
+        Apisauce: a popular HTTP client that helps us create requests. Apisauce is a promise-based HTTP client that
+        has an easy-to-use API and can be used in the browser. It also gives a standardized error format, for better
+        handling.
+      </li>
+      <li>
+        Node.js is a back-end runtime environment that executes JavaScript outside the browser
+      </li>
+      <li>
+        Mongoose is an object data modeling tool based on MongoDB. It is a wrapper for the native MongoDB driver for the
+        nodejs ecosystem. Helps developers with out-of-the-box solutions and eases the database development process.
+      </li>
+      <li>
+        Jsonwebtoken is a library that helps in encrypting and decrypting data, considered to be one of the standards in
+        web applications
       </li>
     </ol>
     <div>
       <h3 id="api">3.2 API</h3>
       <p>
-        API is the acronym for Application Programming Interface, which is a software intermediary that allows two
-        applications to talk to each other. To be more specific it’s an information gateway that allows the backends of
-        software and services to communicate with one another.
-        How does this work? An API is the messenger that delivers your request to the provider that you're requesting it
-        from and then delivers the response back to you.
+        The API, or the so called Application Programming Interface, is a collection of programming code that makes
+        communication between applications possible. The API consists of 2 major components:
+        The technical specifications that detail the data exchange between applications, stipulating specifications in
+        the form of a request that is used for processing and data delivery protocols;
       </p>
       <p>
-        APIs work using ‘requests’ and ‘responses’. When an API requests information from a web application or web
-        server,
-        it will receive a response. The place that APIs send requests and where the resource lives, is called an
-        endpoint.
+        A software interface that mirrors the specifications it represents.
+        The way it happens is as follows: a software that needs access to a certain piece of information or
+        functionality from another software, will call its API, by specifying the demands of how the data should be
+        handed over. Finally, the called API will send back the data requested by the former application.
+      </p>
+      <p>
+        Nowadays, companies make APIs a priority of their applications and invest time to strategically construct their
+        APIs. Their main goal is to grow their apps by improving and adding features, and have the APIs stay integral in
+        using the product functionality. Taking the APIs seriously is one of the fastest ways to get value from data and
+        evolving businesses all over the world have recognized that embracing APIs is imperative.
       </p>
       <p>
         The API that will be used for the application is <a href="https://api.coingecko.com/api/v3">CoinGecko</a>.
       </p>
       <p>
-        CoinGecko provides a fundamental analysis of the crypto market. In addition to tracking price, volume and market
-        capitalization, CoinGecko tracks community growth, open-source code development, major events and on-chain
-        metrics. The objective of this API is to elevate crypto participants’ understanding of fundamental factors that
-        drive the market. It currently tracks nearly 5968 tokens from more than 410 cryptocurrency exchanges.
+        CoinGecko provides a broadened analysis of the cryptocurrency market. It tracks price, volume and market
+        caps, and many more detailed information about the aforementioned. Their objective is to help
+        crypto participants to understand the fundamentals of a given market. It currently tracks around 6000
+        tokens from more than 400 cryptocurrency exchanges.
       </p>
     </div>
 
-    <h4>In the development of the application we will use these 2 endpoints:</h4>
+    <h4>In the development of the application we will use these endpoints:</h4>
     <ul>
       <li>
-        <strong>GET</strong> <i>/coins/${id}/market_chart/id?vs_currency=usd&days=1&interval=daily</i>
+        <strong>GET</strong> <i>/simple/price?ids=bitcoin, ethereum&vs_currencies=eur, usd</i>
         <strong>-></strong>
-        Get historical market data including price, market cap, and 24h volume (granularity auto). It can take the
+        Retrieves the current price of any cryptocurrencies in any supported currencies.
+        It can take the following parameters: ids (passes a list of coins), vs_currencies (passes a list of currencies),
+      </li>
+      <li>
+        <strong>GET</strong> <i>/coins/${id}/market_chart?vs_currency=usd&days=1&interval=daily</i>
+        <strong>-></strong>
+        Retrieves historical market data including price, market cap, and 24h volume. It can take the
         following parameters: id (passes the coin id), vs_currency (The target currency of market data), days (Data up
-        to number of days ago), interval (Optional) (Data interval).
+        to number of days ago), interval(Data interval).
       </li>
       <li>
-        <strong>GET</strong> <i>/coins/markets?vs_currency=usd&ids=bitcoin</i> <strong>-></strong> Lists all supported
-        coins price, market cap, volume, and market related data. It can take many more parameters, like category,
-        order, page or price_change_percentage, but for this application only 2 will be used: vs_currency (The target
-        currency of market data) and ids (The ids of the coin, comma separated cryptocurrency symbols).
-      </li>
-    </ul>
-
-    <h4>This API offers many more endpoints, such as:</h4>
-    <ul>
-      <li>
-        <strong>GET</strong> /coins/{id}/history - Get historical data (name, price, market, stats) at a given date for
-        a coin.
+        <strong>GET</strong> <i>/coins/${id}/market_chart/range?vs_currency=usd&from="unix_date"&to="unix_date"</i>
+        <strong>-></strong>
+        Retrieves historical market data including price, market cap, and 24h volume. It can take the
+        following parameters: id (passes the coin id), vs_currency (The target currency of market data), to and from
+        values that are expressed in unix dates
       </li>
       <li>
-        <strong>GET</strong> /coins/{id}/market_chart/range - Get historical market data include price, market cap, and
-        24h volume within a range of timestamp.
+        <strong>GET</strong> <i>/coins/markets?vs_currency=usd&ids=bitcoin</i> <strong>-></strong>
+        Lists all supported coins prices, market caps, volumes, and market related datas. It can take many more
+        parameters, like category, order, page or price_change_percentage, but for this application only 2 will be used:
+        vs_currency (The target currency of market data) and ids (The ids of the coin, comma separated cryptocurrency
+        symbols).
       </li>
       <li>
-        <strong>GET</strong> /coins/{id}/status_updates - Get status updates for a given coin.
+        <strong>GET</strong> <i>/coins/{id}/history?vs_currency=usd&ids=bitcoin</i> <strong>-></strong>
+        Retrieves historical data (name, price, market, stats) of a coin for given date. It has 3 parameters:
+        id (The id of the coin), the date, in (dd/mm/yyyy format) and localization to include a multitude of languages
       </li>
-      There are many others endpoints. For a more detailed description of the API can be found at this
-      <a href="https://www.coingecko.com/en/api">link</a>. But for the first version of the application the chosen two
-      endpoints are enough.
+      <li>
+        <strong>GET</strong> <i>/simple/supported_vs_currencies?</i> <strong>-></strong>
+        Retrieves a list of all supported currencies, such as usd, gbp, eur, etc.
+      </li>
     </ul>
     <div>
       <h3 id="paradigms">3.3 Paradigms</h3>
@@ -194,7 +218,6 @@
       </p>
     </div>
     <div>
-      <img class="image" width="700" height="550" src="./component_schema.png" />
       <h3 id="app-structure">3.4 App Structure</h3>
       <h4>Front-end</h4>
       <ul>
@@ -206,48 +229,52 @@
         <li>
           The app will be developed as SPA (Single page application), having one big component, which usually is called
           App. From our App component, the rest of the application will stem, basically creating a tree of smaller
-          components, as you can see in the image below.
+          components.
+          For the first version of the application, we will have 3 main screens, the landing page, the markets page and
+          the coin page, each displaying cryptocurrency related data in a different way.
+          In later versions the app will have many more screens incorporated.
         </li>
         <li>
           As mentioned, we will be using Material-ui framework in order to create our components. To give our components
           a proper design we will make use of the styled components approach provided by this framework.
         </li>
         <li>
-          To access the CoinGecko API, we will create an API controller. This will define a few methods that return
-          diverse information, ex: get the price fluctuation of a certain coin over a period of time (24 hours, 7 days
-          or 1 year).
-        </li>
-        <li>
-          In order to abstract the logic of fetching all the coin related data we will create a hook and it will be used
-          wherever it will be needed.
+          For the data manipulation on the client-side, as mentioned before, we will use React-query.
+          In order to abstract the logic of fetching all the coins related data we will be createting different types of
+          hooks and will be used where it will be needed
         </li>
         <p>As of now, we don’t see any other structural or architectural need for the frontend of the application.</p>
       </ul>
       <h4>Back-end</h4>
-      <h4>As of now we see two approaches for the back-end:</h4>
       <ul>
         <li>
-          Go with a ‘serverless’ approach, meaning we won’t create a dedicated server for the application and just use
-          the services already created in the front-end.
+          The backend part of the application will be a dedicated node.js server, using the express framework. This
+          server will act as a proxy to the CoinGecko API and serve the data to the frontend app. The backend will be
+          constructed as a multitiered application, having repository, service and controller layer, for a better
+          understanding and modularity
         </li>
         <li>
-          Create a dedicated node.js server, using the express framework. This server will act as a proxy to the
-          CoinGecko API and serve the data to the frontend app.
+          There will be around 8 endpoints that will be created, each serving different data in different circumstances.
+          The planned routes will manipulate and transform the data received from the coinGecko API in order to give
+          display it on the frontend easier.
         </li>
       </ul>
+      <img class="image" width="1100" height="550" src="./component_schema.png" />
     </div>
     <div>
       <h3 id="user-persona">3.5 User Persona</h3>
       <ul>
-        <li> Name - David </li>
+        <li>Name - David </li>
         <li>Age - 35 years</li>
         <li>Annual salary - $300.000</li>
         <li>Family status - Married, has 1 kid</li>
         <li>Hobbies - Hiking, biking, playing chess, traveling</li>
         <li>Where do they live? - San Francisco</li>
         <li>Brand and services they like - they are interested in high-end and quality brands</li>
-        <li>Personality - David is an opportunist, eager to trade money at currencies that inspire him trust and
-          interest</li>
+        <li>
+          Personality - David is an opportunist, eager to trade money at currencies that inspire him trust and
+          interest
+        </li>
         <li>Characteristics - Open-minded, risk-taker, organized, responsible</li>
         <li>Hours of work per day - 8 hours/day;</li>
         <li>What device do they use at work? - Desktop;</li>
@@ -315,20 +342,133 @@
     <div>
       <h3 id="wireframes">3.7 Wireframes</h3>
       <h4>Home Page</h4>
-      <img class="image" width ="700" height="550" src="./cryma_homePage.png"/>
+      <img class="image" width="900" height="550" src="./cryma_homePage.png" />
+      <h4>Market Page</h4>
+      <img class="image" width="800" height="550" src="./cryma_marketPage.png" />
       <h4>Coin Detail Page</h4>
-      <img class="image" width ="700" height="550" src="./cryma_chartPage.png"/>
+      <img class="image" width="700" height="550" src="./cryma_chartPage.png" />
+    </div>
+    <div>
+      <h3 id="design">3.8 Design</h3>
+      <h4>Logo</h4>
+      <h4>Our logo is represented by the following elements:</h4>
+      <ul>
+        <li>
+          Bitcoin symbol in the middle: the cryptocurrency is the currency around which the whole application revolves
+          around and bitcoin, is by far the most known cryptocurrency on the market, its price having a huge impact on
+          the crypto market. By displaying it’s symbol, we want to convey to the user the idea of power, which Bitcoin
+          has plenty.
+        </li>
+        <li>
+          Outside circle, which has 2 circular insertions on them: the outside circle represents the other currencies
+          that orbit around bitcoin. These elements convey the idea of conversion. The 2 circular insertions positioned
+          at opposite poles suggest the motivation for which the user is using the app, that of investing and obtaining
+          a profit from currency trading.
+        </li>
+      </ul>
+      <img class="image" width="650" height="600" src="./cryma-logo.png" />
+      <h4>Color Schema</h4>
+      <ul>
+        <li>
+          Orange: first of all, we chose this color, because it makes the user think of Bitcoin (orange being the
+          Bitcoin primary logo color). Secondly, orange is a color that conveys the user the idea of wealthyness, since
+          it makes the user think of gold. Since the main goal of our users is to make the most out of advantageous
+          exchanges, this is an extremely important idea to transmit. In the third place, orange catches attention and
+          signals safety (being common is warning signs). It also stimulates action, which makes it a great color to use
+          for promoting activity.
+        </li>
+        <li>
+          Gray: in the interface of our application, gray is used to express professionalism and conventionality. Gray,
+          associated with the gray hair of old age, suggests responsibility and formality, which are substantial values
+          we want our app to suggest.
+        </li>
+        <li>
+          Black: black is associated with power, being a grounding design element. We decided to mainly use it for
+          typography, since it works well in combination with any other color.
+        </li>
+        <li>
+          White: we used white within our application to create a minimalist and clean aesthetic. Alongside black, it’s
+          a neutral color and if putting darker text over it, it makes everything much easier to read.
+        </li>
+      </ul>
+      <img class="image" width="700" height="600" src="./cryma-color-schema.png" />
+      <h4>Typography</h4>
+      <ul>
+        <li>
+          First of all, we chose Roboto as a text font for our application, because it’s clean and has an easy to read
+          shape, in which the white spaces pioneer to form a sharp design.
+        </li>
+        <li>
+          Secondly, its strokes create an elegant contrast, which makes the test easy to read. Lastly, it’s quite a
+          comprehensive family font, which gained popularity on the web and makes it a great choice for web app designs.
+        </li>
+      </ul>
+      <img class="image" width="850" height="550" src="./cryma-typography-font.png" />
     </div>
     <div>
       <h3 id="references">4. References</h3>
       <ul>
-        <li><a href="https://reactjs.org/">React.js</a></li>
-        <li><a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a></li>
-        <li><a href="https://en.wikipedia.org/wiki/API">API</a></li>
-        <li><a href="https://www.coingecko.com/en/api">CoinGecko</a></li>
-        <li><a href="https://material-ui.com/">Material-ui</a></li>
-        <li><a href="https://www.chartjs.org/">Chart.js</a></li>
-        <li><a href="https://github.com/axios/axios">Axios</a></li>
+        <li>
+          React, “React - A JavaScript library for building user interfaces”, (n.d.), retrieved from:
+          <a href="https://reactjs.org/">https://reactjs.org/</a>, accessed on November 16, 2020
+        </li>
+        <li>
+          Coingecko, “The world's most comprehensive cryptocurrency API”, (n.d.),
+          retrieved from: <a href="https://www.coingecko.com/en/api">https://www.coingecko.com/en/api</a>, accessed on
+          November 16, 2020
+        </li>
+        <li>
+          Material-ui, “MATERIAL-UI - React components for faster and easier web development”, (n.d.),
+          retrieved from: <a href="https://material-ui.com/">https://material-ui.com/</a>, accessed on November 16, 2020
+        </li>
+        <li>
+          Chart.js, “Chart.js - Simple yet flexible JavaScript charting for designers & developers”, (n.d.),
+          retrieved from: <a href="https://www.chartjs.org/">https://www.chartjs.org/</a>, accessed on November 16, 2020
+        </li>
+        <li>
+          Axios, “Promise based HTTP client for the browser and node.js”, (n.d.), retrieved from:<a
+            href="https://github.com/axios/axios">https://github.com/axios/axios</a>,
+          accessed on November 16, 2020
+        </li>
+        <li>
+          Apisauce, “Axios + standardized errors + request/response transforms”, (n.d.), retrieved from:
+          <a href="https://github.com/infinitered/apisauce">https://github.com/infinitered/apisauce</a>, accessed on
+          November 16, 2020
+        </li>
+        <li>
+          ReactQuery, “Performant and powerful data synchronization for React”, (n.d.), retrieved from:
+          <a href="https://react-query.tanstack.com/">https://react-query.tanstack.com/</a>, accessed on November 17,
+          2020
+        </li>
+        <li>
+          A. Lundberg, “Color meanings and the art of using color symbolism”, 2020, retrieved from:
+          <a href="https://99designs.com/blog/tips/color-meanings/">https://99designs.com/blog/tips/color-meanings/</a>,
+          accessed on November 17, 2020
+        </li>
+        <li>
+          A. Asthana, “We're Living In An API-First World -- Let's Start Developing Like It”, 2019, retrieved from:
+          <a
+            href="https://www.forbes.com/sites/forbestechcouncil/2019/01/30/were-living-in-an-api-first-world-lets-start-developing-like-it/?sh=23b9391651b2">
+            https://www.forbes.com/sites/forbestechcouncil/2019/01/30/were-living-in-an-api-first-world-lets-start-developing-like-it/?sh=23b9391651b2
+          </a>,
+          accessed on November 17, 2020
+        </li>
+        <li>
+          F. Fatemi, “How APIs Can Transform Your Company”, 2020, retrieved from:
+          <a
+            href="https://www.forbes.com/sites/falonfatemi/2020/08/27/how-apis-can-transform-your-company/?sh=5c5abc077009">
+            https://www.forbes.com/sites/falonfatemi/2020/08/27/how-apis-can-transform-your-company/?sh=5c5abc077009
+          </a>,
+          accessed on November 17, 2020
+        </li>
+        <li>
+          Altexsoft, “What is API: Definition, Types, Specifications, Documentation”, 2019, retrieved from:
+          <a
+            href="https://www.altexsoft.com/blog/engineering/what-is-api-definition-types-specifications-documentation/">
+            https://www.altexsoft.com/blog/engineering/what-is-api-definition-types-specifications-documentation/
+          </a>,
+          accessed on November 17, 2020
+        </li>
       </ul>
     </div>
   </div>
