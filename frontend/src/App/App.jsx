@@ -9,7 +9,7 @@ import { Navbar } from 'components';
 
 import { useStyles } from './styles';
 
-import Router from './Router';
+import { Router } from 'App';
 
 
 export default function App() {
