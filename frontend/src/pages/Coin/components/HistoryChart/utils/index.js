@@ -1,0 +1,1 @@
+export { default as useHistoryChart } from "./useHistoryChart"
