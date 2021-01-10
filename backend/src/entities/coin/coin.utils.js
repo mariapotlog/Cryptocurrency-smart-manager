@@ -1,9 +1,8 @@
 import { convertUnixToDate } from '@helpers';
 
 const convertSupportedCurrenciesData = (data) => {
-  const newObj = {}
-  data.map((obj) => newObj[obj] = obj);
-  return newObj;
+  const mappedData = data.map((obj) => ({ value: obj, title: obj.toUpperCase() }));
+  return mappedData;
 }
 
 const convertCoinData = (data) => {

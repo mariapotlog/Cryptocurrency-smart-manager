@@ -95,6 +95,8 @@ const loginUser = async ({ email, password }) => {
     const payload = {
       id: user._id,
       email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName
     };
     const accessToken = jwt.sign(payload, Constants.secretOrKey, {
       expiresIn: "1h",
