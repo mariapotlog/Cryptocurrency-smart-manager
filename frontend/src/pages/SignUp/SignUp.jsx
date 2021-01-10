@@ -1,26 +1,44 @@
 import {
-  Avatar,
-  Button,
   CssBaseline,
   TextField,
-  Link,
   Grid,
   Box,
   Typography,
   Container,
-} from "@material-ui/core"
+  Button
+} from "@material-ui/core";
 
-import { Copyright } from 'components';
+import { Copyright, CustomLink } from 'components';
+import { useRegister } from "./utils"
 
-import {useStyles} from "./styles"
+import { useStyles } from "./styles"
 
 export default function SignUp() {
   const classes = useStyles();
+  const {
+    register,
+    validation: { isValid, setIsValid },
+    errors: { setErrors, errors },
+    loading: { isLoading, setIsLoading },
+    user: {
+      email, setEmail,
+      firstName, setFirstName,
+      lastName, setLastName,
+      password, setPassword,
+      confirmedPassword, setConfirmedPassword
+    }
+  } = useRegister()
+
+
+  const registerWrapper = () => register(
+    { email, firstName, lastName, password, confirmedPassword },
+    { setIsLoading, setErrors, setIsValid }
+  )
+
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" className={classes.root}>
       <CssBaseline />
       <Box className={classes.paper}>
-        <Avatar className={classes.avatar} />
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
@@ -35,7 +53,8 @@ export default function SignUp() {
                 fullWidth
                 id="firstName"
                 label="First Name"
-                autoFocus
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -47,6 +66,8 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
               />
             </Grid>
             <Grid item xs={12}>
@@ -58,6 +79,8 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
             </Grid>
             <Grid item xs={12}>
@@ -70,30 +93,49 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="confirmedPassword"
+                label="Confirm Password"
+                type="password"
+                id="confirmedPassword"
+                onChange={(e) => setConfirmedPassword(e.target.value)}
+                value={confirmedPassword}
               />
             </Grid>
           </Grid>
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={() => registerWrapper()}
+            disabled={isLoading}
           >
             Sign Up
           </Button>
+          <Box classNames={classes.errors}>
+            {!isValid && errors.map(err => <Typography variant={"bod1y"} key={err} color='error'>{err}<br /></Typography>)}
+          </Box>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <CustomLink to="/sign-up" >
                 Already have an account? Sign in
-              </Link>
+              </CustomLink>
             </Grid>
           </Grid>
         </form>
       </Box>
-
-      <Copyright />
-
-    </Container>
+      <Box mt={3}>
+        <Copyright />
+      </Box>
+    </Container >
   );
 }

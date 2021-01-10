@@ -1,28 +1,37 @@
 import {
-  Avatar,
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
-  Link,
   Grid,
   Box,
   Typography,
   Container,
-} from "@material-ui/core"
+} from "@material-ui/core";
 
-import { Copyright } from 'components';
+import { Copyright, CustomLink } from 'components';
+import { useLogin } from './utils';
 
 import { useStyles } from "./styles"
 
 export default function SignIn() {
   const classes = useStyles();
+  const {
+    login,
+    validation: { isValid },
+    errors: { errors },
+    loading: { isLoading },
+    user: {
+      email, setEmail,
+      password, setPassword,
+    }
+  } = useLogin();
+
+  const loginWrapper = (e) => login(e);
+
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" className={classes.root}>
       <CssBaseline />
       <Box className={classes.paper}>
-        <Avatar className={classes.avatar} />
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
@@ -36,7 +45,9 @@ export default function SignIn() {
             label="Email Address"
             name="email"
             autoComplete="email"
-            autoFocus
+            // autoFocus
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
           <TextField
             variant="outlined"
@@ -48,10 +59,8 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
           />
           <Button
             type="submit"
@@ -59,24 +68,24 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={(e) => loginWrapper(e)}
+            disabled={isLoading}
           >
             Sign In
           </Button>
+          <Box classNames={classes.errors} >
+            {!isValid && errors.map(err => <Typography variant={"bod1y"} key={err} color='error'>{err}<br /></Typography>)}
+          </Box>
           <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <CustomLink to="/sign-up" variant="body2">
                 {"Don't have an account? Sign Up"}
-              </Link>
+              </CustomLink>
             </Grid>
           </Grid>
         </form>
       </Box>
-      <Box mt={8}>
+      <Box mt={3}>
         <Copyright />
       </Box>
     </Container>
