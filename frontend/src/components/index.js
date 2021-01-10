@@ -5,4 +5,5 @@ export { default as CustomLink } from "./CustomLink/CustomLink";
 export { default as LoadingSpinner } from "./LoadingSpinner/LoadingSpinner";
 export { default as CoinBar } from "./CoinBar/CoinBar";
 export { default as Chart } from "./Chart/Chart";
+export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute";
 export { CoinSkeleton, CoinListSkeleton } from "./Skeletons";
